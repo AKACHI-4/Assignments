@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "9dd5ab50-c5cd-4448-ae26-797c6e94a7ea",
+		"name": "TaskInApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24873585"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"adarsh5678\",\r\n    \"password\":\"adarsh\",\r\n    \"email\":\"adarsh2@mail.com\",\r\n    \"phone\":\"+918171414060\",\r\n    \"priority\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"adarsh8304\",\r\n    \"password\":\"adarsh1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"adarsh1234\",\r\n    \"newPassword\": \"adarsh8304\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/users/change-password"
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "adarsh8304",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "adarsh@chai.ac.in",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "adarshispassword",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{server}}/users/refresh-token"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{server}}/users/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "update-account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullname",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{server}}/users/update-account"
+					},
+					"response": []
+				},
+				{
+					"name": "current-user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{server}}/users/current-user"
+					},
+					"response": []
+				},
+				{
+					"name": "tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{server}}/users/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "subtasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"0\"\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/users/subtasks"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "create-task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Task 12\",\r\n    \"description\": \"Description for Task 12\",\r\n    \"due_date\": \"2024-04-11\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/tasks/create-task"
+					},
+					"response": []
+				},
+				{
+					"name": "update-task",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"due_date\": \"2024-03-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/tasks/update-task/65f5dc6bfcc7613c367f47fe"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{server}}/tasks/delete-task/65f5dc75fcc7613c367f4808"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subtask",
+			"item": [
+				{
+					"name": "create-subtask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"Subtask 14.2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/tasks/65f58abdccba418357f70330/subtasks/create-subtask"
+					},
+					"response": []
+				},
+				{
+					"name": "update-subtask",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"Subtask Changed\",\r\n    \"status\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{server}}/tasks/65f5dc18fcc7613c367f47d1/subtasks/update-subtask/65f5dd6c04d8d9429d7f4261"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-subtask",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{server}}/tasks/65f5dc18fcc7613c367f47d1/subtasks/delete-subtask/65f5dd6c04d8d9429d7f4261"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		}
+	]
+}

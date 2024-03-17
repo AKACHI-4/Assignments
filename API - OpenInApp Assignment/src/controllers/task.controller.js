@@ -4,6 +4,7 @@ import { apiResponse } from "../utils/apiResponse.js";
 
 import { Task } from "../models/task.model.js";
 import { User } from "../models/user.model.js";
+import { Subtask } from "../models/subtask.model.js";
 
 const createTask = asyncHandler(async (req, res) => {
   let { title, description, due_date } = req.body;
@@ -89,6 +90,9 @@ const deleteTask = asyncHandler(async (req, res) => {
   }
 
   console.log(task);
+
+  for (const subtask of task.subtaskHistory)
+    await Subtask.findByIdAndDelete(subtask);
 
   await User.findByIdAndUpdate(req.user?._id, {
     $pull: { taskHistory: task_id },
